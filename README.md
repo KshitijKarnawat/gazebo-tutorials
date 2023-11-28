@@ -44,20 +44,6 @@ cd < path_to_your_workspace >
 ros2 launch gazebo_tutorials walker.py record:=< true or false >
 ```
 
-### Running ROSBAG
-
-To record the data published by the `publisher` and `server` we can use ROSBAG.
-
-```sh
-cd < path_to_your_workspace >
-
-# Source your setup file
-. install/setup.bash
-
-# Runs the bag file
-ros2 bag play src/beginner_tutorials/bagfiles/tutorial_bagfile
-```
-
 ## Dependencies
 
 - [ROS2 Humble](https://docs.ros.org/en/humble/index.html)
