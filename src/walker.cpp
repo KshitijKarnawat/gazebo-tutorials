@@ -27,8 +27,14 @@ class WalkerAlgo : public rclcpp::Node {
    * 
    */
   WalkerAlgo() : Node("walker") {
-    laser_data_subscriber = this->create_subscription<sensor_msgs::msg::LaserScan>("scan", 10, std::bind(&WalkerAlgo::laser_scan_cb, this, std::placeholders::_1));
-    velcoity_publisher = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
+    laser_data_subscriber =
+      this->create_subscription<sensor_msgs::msg::LaserScan>
+        ("scan",
+        10,
+        std::bind(&WalkerAlgo::laser_scan_cb, this, std::placeholders::_1));
+
+    velcoity_publisher =
+      this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
   }
 
  private:
@@ -65,10 +71,11 @@ class WalkerAlgo : public rclcpp::Node {
     velcoity_publisher->publish(twist);
   }
 
-  rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr laser_data_subscriber;
+  rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr
+    laser_data_subscriber;
   rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr velcoity_publisher;
   rclcpp::TimerBase::SharedPtr timer;
-  sensor_msgs::msg::LaserScan laser_scan;
+  sensor_msgs::msg::LaserScan laser_data_subscriber;
 };
 
 /**
